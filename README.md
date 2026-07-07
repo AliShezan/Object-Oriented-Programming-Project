@@ -82,3 +82,33 @@ The lib folder will contain any third-party libraries if needed later.
 
 The tests folder will contain JUnit test classes later in the project.
 
+
+## Sprint 2 Project Proposal
+
+### Project Name
+GymBro Workout Planner
+
+### Project Description
+GymBro Workout Planner is a Java command-line fitness tracking application that allows users to create workout plans, add exercises, log completed workouts, and view workout history. The project is designed to demonstrate object-oriented programming principles through a modular structure that can later be extended with multiple design patterns.
+
+### Planned Features
+- Add strength exercises
+- Add cardio exercises
+- View the current workout plan
+- Log completed workouts
+- View workout history
+- Generate simple progress summaries in later sprints
+
+### Planned Libraries
+No external libraries are currently planned for Sprint 2. The project will use standard Java libraries. JUnit will be added later for testing.
+
+### Planned Design Patterns
+- Factory Pattern
+- Strategy Pattern
+- Builder Pattern
+- Command Pattern
+- Observer Pattern
+- Singleton Pattern
+
+### Sprint 2 Progress Plan
+For Sprint 2, the goal is to create the project foundation, including the command-line menu, model classes, workout plan structure, and basic workout logging functionality.
