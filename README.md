@@ -114,3 +114,45 @@ No external libraries are currently planned for Sprint 2. The project will use s
 
 ### Sprint 2 Progress Plan
 For Sprint 2, the goal is to create the project foundation, including the command-line menu, model classes, workout plan structure, and basic workout logging functionality.
+
+## Sprint 4 Design Pattern Progress
+
+### Design Pattern 3: Builder Pattern
+
+The Builder Pattern is used to create workout plans step-by-step. The WorkoutPlanBuilder allows the application to build a WorkoutPlan by chaining method calls for strength and cardio exercises. This keeps workout plan construction cleaner and easier to extend.
+
+Relevant classes:
+- WorkoutPlanBuilder
+- WorkoutPlan
+- ExerciseFactory
+- Exercise
+- StrengthExercise
+- CardioExercise
+- PushPullLegsStrategy
+- UpperLowerStrategy
+- FullBodyStrategy
+
+UML Diagram:
+- BuilderPatternUML.puml
+
+### Design Pattern 4: Observer Pattern
+
+The Observer Pattern is used when a workout is logged. WorkoutService logs the workout, then WorkoutNotifier notifies registered observers. ProgressTracker currently observes workout logging events and updates the completed workout count.
+
+Relevant classes:
+- WorkoutObserver
+- ProgressTracker
+- WorkoutNotifier
+- WorkoutService
+- WorkoutLog
+
+UML Diagram:
+- ObserverPatternUML.puml
+
+### Updated Final Submission Demo Plan
+
+For the final submission, I plan to demonstrate GymBro Workout Planner as a command-line application. The demo will show adding exercises, generating workout plans using Strategy Pattern, building workout plans through Builder Pattern, logging completed workouts, and notifying progress tracking through Observer Pattern.
+
+### Sprint 4 Problems or Issues
+
+There are no major blocking issues at this time. The application currently stores data only while it is running. File saving or permanent storage may be added later if time allows.

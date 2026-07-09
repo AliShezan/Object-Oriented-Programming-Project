@@ -1,0 +1,31 @@
+@startuml
+title Builder Pattern - Workout Plan Builder
+
+class WorkoutPlanBuilder {
+    - workoutPlan: WorkoutPlan
+    - exerciseFactory: ExerciseFactory
+    + WorkoutPlanBuilder(planName: String)
+    + addStrengthExercise(name: String, muscleGroup: String, sets: int, reps: int, weight: double): WorkoutPlanBuilder
+    + addCardioExercise(name: String, muscleGroup: String, durationMinutes: int, distanceMiles: double): WorkoutPlanBuilder
+    + build(): WorkoutPlan
+}
+
+class WorkoutPlan {
+    - planName: String
+    - exercises: List<Exercise>
+    + addExercise(exercise: Exercise): void
+    + getPlanSummary(): String
+}
+
+class ExerciseFactory {
+    + createStrengthExercise(name: String, muscleGroup: String, sets: int, reps: int, weight: double): Exercise
+    + createCardioExercise(name: String, muscleGroup: String, durationMinutes: int, distanceMiles: double): Exercise
+}
+
+abstract class Exercise
+
+WorkoutPlanBuilder --> WorkoutPlan
+WorkoutPlanBuilder --> ExerciseFactory
+ExerciseFactory ..> Exercise
+WorkoutPlan --> Exercise
+@enduml

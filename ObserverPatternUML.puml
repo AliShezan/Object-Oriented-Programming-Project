@@ -1,0 +1,39 @@
+@startuml
+title Observer Pattern - Workout Logging Notifications
+
+interface WorkoutObserver {
+    + update(workoutEntry: String): void
+}
+
+class ProgressTracker {
+    - completedWorkoutCount: int
+    + ProgressTracker()
+    + update(workoutEntry: String): void
+    + getCompletedWorkoutCount(): int
+}
+
+class WorkoutNotifier {
+    - observers: List<WorkoutObserver>
+    + WorkoutNotifier()
+    + addObserver(observer: WorkoutObserver): void
+    + removeObserver(observer: WorkoutObserver): void
+    + notifyObservers(workoutEntry: String): void
+}
+
+class WorkoutService {
+    - workoutLog: WorkoutLog
+    - workoutNotifier: WorkoutNotifier
+    + logCompletedWorkout(description: String): void
+}
+
+class WorkoutLog {
+    - completedWorkouts: List<String>
+    + logWorkout(workoutDescription: String): String
+    + getLogSummary(): String
+}
+
+WorkoutObserver <|.. ProgressTracker
+WorkoutNotifier --> WorkoutObserver
+WorkoutService --> WorkoutNotifier
+WorkoutService --> WorkoutLog
+@enduml
