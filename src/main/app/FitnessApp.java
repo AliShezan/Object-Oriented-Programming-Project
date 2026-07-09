@@ -2,6 +2,10 @@ package main.app;
 
 import java.util.Scanner;
 import main.service.WorkoutService;
+import main.strategy.FullBodyStrategy;
+import main.strategy.PushPullLegsStrategy;
+import main.strategy.UpperLowerStrategy;
+import main.strategy.WorkoutPlanStrategy;
 
 public class FitnessApp {
     private Scanner scanner;
@@ -34,7 +38,8 @@ public class FitnessApp {
         System.out.println("3. View workout plan");
         System.out.println("4. Log completed workout");
         System.out.println("5. View workout history");
-        System.out.println("6. Exit");
+        System.out.println("6. Generate workout plan by style");
+        System.out.println("7. Exit");
     }
 
     private void handleMenuChoice(int choice) {
@@ -49,9 +54,11 @@ public class FitnessApp {
         } else if (choice == 5) {
             viewWorkoutHistory();
         } else if (choice == 6) {
+            generateWorkoutPlanByStyle();
+        } else if (choice == 7) {
             running = false;
         } else {
-            System.out.println("Invalid choice. Please choose a number from 1 to 6.");
+            System.out.println("Invalid choice. Please choose a number from 1 to 7.");
         }
     }
 
@@ -100,6 +107,31 @@ public class FitnessApp {
     private void viewWorkoutHistory() {
         System.out.println();
         System.out.println(workoutService.viewWorkoutLog());
+    }
+
+    private void generateWorkoutPlanByStyle() {
+        System.out.println();
+        System.out.println("--- Generate Workout Plan by Style ---");
+        System.out.println("1. Push Pull Legs");
+        System.out.println("2. Upper Lower");
+        System.out.println("3. Full Body");
+
+        int choice = readInt("Choose a plan style: ");
+        WorkoutPlanStrategy strategy = null;
+
+        if (choice == 1) {
+            strategy = new PushPullLegsStrategy();
+        } else if (choice == 2) {
+            strategy = new UpperLowerStrategy();
+        } else if (choice == 3) {
+            strategy = new FullBodyStrategy();
+        } else {
+            System.out.println("Invalid plan style.");
+            return;
+        }
+
+        workoutService.applyWorkoutPlanStrategy(strategy);
+        System.out.println(strategy.getStrategyName() + " plan generated successfully.");
     }
 
     private String readLine(String prompt) {
