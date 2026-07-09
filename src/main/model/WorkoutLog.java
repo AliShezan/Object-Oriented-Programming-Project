@@ -12,22 +12,6 @@ public class WorkoutLog {
         this.completedWorkouts = new ArrayList<>();
     }
 
-
-cat > src/main/model/WorkoutLog.java << 'EOF'
-package main.model;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-
-public class WorkoutLog {
-    private List<String> completedWorkouts;
-
-    public WorkoutLog() {
-        this.completedWorkouts = new ArrayList<>();
-    }
-
     public String logWorkout(String workoutDescription) {
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
